@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EST Khenifra - Mot du Directeur</title>
+    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="calendar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+
+        /* Styles pour la barre de navigation supérieure */
+        .top-bar {
+            background-color: #036374!important;
+            padding: 15px 0;
+            width: 100%;
+        }
+
+        .top-bar nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
+        }
+
+        .top-bar nav ul li a {
+            color: white !important;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        .top-bar nav ul li a:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .highlight {
+            background-color: transparent !important;
+            padding: 8px 15px !important;
+            border-radius: 4px !important;
+            color: #F39C12 !important;
+            font-size: 16px !important;
+            transition: all 0.3s ease !important;
+            border: 1px solid #F39C12 !important;
+        }
+
+        .highlight:hover {
+            background-color: transparent !important;
+            color: #F39C12 !important;
+            border: 1px solid #F39C12 !important;
+        }
+
+        /* Styles pour la barre de navigation inférieure */
+        .bottom-bar {
+            background: white;
+            padding: 15px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo-container {
+            flex: 0 0 auto;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .bottom-bar nav {
+            flex: 1;
+            margin: 0 50px;
+        }
+
+        .bottom-bar nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .bottom-bar nav ul li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .bottom-bar nav ul li a:hover {
+            color: #036374;
+        }
+
+        /* Style du menu déroulant amélioré */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 10px 0;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            color: #333 !important;
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgba(243, 156, 18, 0.1);
+            color: #F39C12 !important;
+            padding-left: 25px;
+        }
+
+        /* Style de la barre de recherche */
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background: white;
+            color: #333;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-button {
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        /* Style du contenu principal */
+        .director-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        .director-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .director-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #036374;
+        }
+
+        .director-header h1 {
+            color: #036374;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .director-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+
+        .director-text p {
+            margin-bottom: 20px;
+        }
+
+        .director-points {
+            margin: 30px 0;
+            padding-left: 20px;
+            list-style: none;
+        }
+
+        .director-points li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+            line-height: 1.6;
+        }
+
+        .director-points li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #036374;
+            font-size: 20px;
+        }
+
+        .director-signature {
+            margin-top: 40px;
+            text-align: right;
+            font-style: italic;
+            color: #036374;
+        }
+
+        .director-name {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .director-title {
+            color: #666;
+        }
+
+        /* Style du footer */
+        .site-footer {
+            background-color: #036374;
+            color: white;
+            padding: 40px 20px 20px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-logo img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h3, 
+        .footer-contact h3 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: #036374;
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Style pour les liens désactivés dans le menu */
+        .dropdown-menu a[style*="not-allowed"] {
+            pointer-events: none;
+        }
+
+        /* Style pour le lien actif */
+        .dropdown-menu a.active {
+            pointer-events: none;
+            font-weight: 500;
+        }
+
+        /* Style pour les autres menus déroulants */
+        .dropdown > a {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Partie supérieure avec fond orange -->
+        <div class="top-bar">
+            <nav>
+                <ul>
+                    <li><a href="test.html" onclick="transition(event, 'test.html')">Accueil</a></li>
+                    <li><a href="calendrier.html" onclick="transition(event, 'calendrier.html')">Calendrier des évènements</a></li>
+                    <li><a href="recrutement.html" onclick="transition(event, 'recrutement.html')">Recrutements</a></li>
+                    <li><a href="appel.html" onclick="transition(event, 'appel.html')">Appels d'offres</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#universite" class="highlight">L'Université</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Partie inférieure avec fond blanc -->
+        <div class="bottom-bar">
+            <div class="logo-container">
+                <img src="LOGOEST.png" alt="Logo de l'école" class="logo">
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#" style="cursor: default;">L'ÉCOLE</a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="active" style="background-color: rgba(243, 156, 18, 0.1); color: #F39C12;">Mot du Directeur</a>
+                            <a href="presentation.html" onclick="transition(event, 'presentation.html')">Présentation</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Organisation</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">L'E.S.T. en chiffre</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Règlements et textes</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#structures">STRUCTURES</a>
+                        <div class="dropdown-menu">
+                            <a href="#" style="cursor: not-allowed; color: #999;">Administration</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Services</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Corps Enseignant</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Departements</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Conseil d'etablissement</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#formations">FORMATIONS</a>
+                        <div class="dropdown-menu">
+                            <a href="#" style="cursor: not-allowed; color: #999;">Diplôme universitaire de Technologie (1/2)</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Diplôme universitaire de Technologie (2/2)</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Licence</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Formations Continues</a>
+                        </div>
+                    </li>
+                    <li><a href="#partenariats">PARTENARIATS</a></li>
+                    <li class="dropdown">
+                        <a href="#etudiant">ETUDIANT</a>
+                        <div class="dropdown-menu">
+                            <a href="#calendrier-universitaire">Calendrier universitaire</a>
+                            <a href="#emploi-temps">Emploi du temps</a>
+                            <a href="#calendrier-examens">Calendrier des examens</a>
+                            <a href="#bourses">Bourses</a>
+                            <a href="#documents-utiles">Documents utiles</a>
+                            <a href="#calendrier-evenements">Calendrier des événements</a>
+                            <a href="#reglement-interieur">Règlement intérieur</a>
+                            <a href="#admission-ecole">Admission à l'Ecole</a>
+                            <a href="#venir-est-khenifra">Venir à l'EST – Khenifra</a>
+                        </div>
+                    </li>
+                    <li><a href="#cours">COURS</a></li>
+                    <li><a href="#vie">VIE UNIVERSITAIRE</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="search" placeholder="Rechercher..." class="search-input">
+                <button class="search-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <div class="director-content">
+        <div class="director-header">
+            <h1>Mot du Directeur</h1>
+        </div>
+        
+        <div class="director-text">
+            <p>L'Ecole Supérieure de Technologie Khénifra ; créée en avril 2013 et qui a ouvert ses portes aux étudiants en septembre 2014, est une institution, relevant aujourd'hui de l'Université Sultan Moulay Slimane. Elle a pour mission principale de délivrer le Diplôme Universitaire de Technologie (D.U.T), le Diplôme de Licence Professionnelle (L.P.) et de répondre aux besoins du secteur socioéconomique de la région du Moyen Atlas aussi bien en matière de formation, de prestations de services qu'en matière de recherche fondamentale, appliquée et recherche développement. Cette école est amenée à procurer aux différents secteurs socio-économiques, à l'échelle locale et nationale, les ressources humaines compétentes qualifiées et adéquates tant par le nombre que par leurs aptitudes professionnelles.</p>
+
+            <p>C'est un grand honneur d'être Directeur de ce bel établissement qui est considéré comme le premier noyau universitaire sur les terres Zaïnes. Etre Directeur est un honneur et une reconnaissance mais c'est avant tout une responsabilité nécessitant des compétences multiples. Dans le cadre de cette fonction, nous devons être d'abord un leader visionnaire ayant la capacité et la facilité de communication, ensuite être capable de gérer des administrations et ayant assez de crédibilité pour pouvoir faire autorité face aux divers problèmes des établissements universitaires, créant ainsi une cohésion entre toutes les composantes de l'école et entre celle-ci et son environnement.</p>
+
+            <p>Dans les pays en voie de développement, la demande d'enseignement supérieur a augmenté au cours des dernières années et les sollicitations des marchés de travail sont devenues de plus en plus pressantes. A ce titre, nous devons nous pencher en premier lieu sur ce problème d'inadéquation formation/emploi. En effet, pour sa croissance économique le Maroc a misé sur des secteurs importants (l'Energie, l'Agriculture, la Pêche maritime, le Tourisme, l'Industrie …) en élaborant des projets tels que le Plan Azur, le Plan Maroc Vert, l'Initiative Nationale pour le Développement Humain (INDH), le Plan Energies Renouvelables, les Initiatives 10000 Ingénieurs, le Plan d'urgence. Pour réussir de telles stratégies. Il faut avoir de fortes structures de gestion et de pilotage. Notre vision est ainsi une continuité et une consolidation des acquis notamment les principaux résultats du plan d'urgence. Elle se cadre avec le projet de développement de l'Université Sultan Moulay Slimane et vise à créer une nouvelle synergie (Pédagogie-Recherche) au service de l'emploi, au sein de l'Ecole Supérieure de Technologie de Khénifra afin de la rendre plus performante, plus attractive et d'augmenter sa visibilité nationale et internationale en lui donnant les moyens de viser l'excellence et la performance. Ce qui permettra à l'école d'assurer sa fonction première, celle de former des étudiants (ou ressources humaines) dotés de compétences nécessaire pour être en adéquation avec les exigences du marché de l'emploi.</p>
+
+            <p>Notre vision est conçue dans le cadre des orientations nationales déterminées par les hautes directives royales, la Charte Nationale de l'Education et de la Formation (CNEF) et la loi 01.00. Elle vise à renforcer le rôle joué par l'université au niveau du développement socio-économique de la région et par conséquent de notre pays en développant au sein des formations qui répondent aux exigences d'un environnement en évolution et aux mutations continues du monde de travail.</p>
+
+            <p>L'Ecole Supérieure de Technologie de Khénifra possède des atouts considérables pour se développer. Elle est appelée actuellement à gérer un processus de changement qui lui permettra de renforcer sa place en tant qu'établissement de qualité de l'Université Sultan Moulay Slimane et d'occuper une place de distinction sur le plan national. Pour cela, les différents acteurs doivent agir à plusieurs niveaux. Notre vision est claire et ambitieuse, nous en avons l'intime conviction que sa réalisation sera à notre portée. Dans cette parfaite harmonie, notre vision s'articule autour de ces principaux points qui représentent la feuille de route pour la période 2020-2024 :</p>
+
+            <ul class="director-points">
+                <li>Une gestion des ressources humaines basée sur une réelle politique participative ;</li>
+                <li>La Modernisation des procédures administratives (informatisation et formation continue pour le personnel) ;</li>
+                <li>Une amélioration de la qualité de l'enseignement, de la formation et de la recherche ;</li>
+                <li>La responsabilisation de l'étudiant dans la gestion de son propre cursus et son orientation vers plus d'esprit d'initiative et d'esprit citoyen ;</li>
+                <li>Le développement d'une politique de partenariat et de coopération ambitieuses ;</li>
+                <li>La valorisation de la recherche occupera une place importante et l'établissement devra avant tout orienter sa recherche vers un intérêt local, régional puis national ;</li>
+                <li>Une bonne gouvernance du temps, du patrimoine, de maintenance, de ressources humaines et financières ;</li>
+            </ul>
+
+            <p>Une approche qualité sera présente à tous les niveaux avec une réelle mobilisation de tous les moyens d'accompagnement humains, matériels et financiers, assurée par une bonne stratégie de communication avec l'ensemble des parties prenantes</p>
+
+            <div class="director-signature">
+                <p class="director-name">Pr. Hassan MOUHDACH</p>
+                <p class="director-title">Directeur de l'Ecole Supérieure de Technologie - Khénifra</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="LOGOEST.png" alt="Logo EST" class="footer-logo-img">
+            </div>
+            <div class="footer-links">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Formations</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Actualités</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>EST Khenifra</p>
+                <p>Adresse: Route de Marrakech, Khenifra</p>
+                <p>Téléphone: +212 5XX XX XX XX</p>
+                <p>Email: contact@est-khenifra.ma</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EST Khenifra. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="transitions.js"></script>
+</body>
+</html> 

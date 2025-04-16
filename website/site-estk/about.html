@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EST Khenifra</title>
+  <link rel="stylesheet" href="test.css">
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+  <header>
+    <!-- Partie supérieure avec fond bleu -->
+    <div class="top-bar">
+      <nav>
+        <ul>
+          <li><a href="test.html" style="color: white;">Accueil</a></li>
+          <li><a href="calendrier.html" onclick="transition(event, 'calendrier.html')" style="color: white; cursor: pointer;">Calendrier des évènements</a></li>
+          <li><a href="recrutement.html" onclick="transition(event, 'recrutement.html')" style="color: white; cursor: pointer;">Recrutements</a></li>
+          <li><a href="#offres">Appels d'offres</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#universite" class="highlight">L'Université</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Partie inférieure avec fond blanc -->
+    <div class="bottom-bar">
+      <div class="logo-container">
+        <img src="LOGOEST.png" alt="Logo de l'école" class="logo">
+      </div>
+      <nav>
+        <ul>
+          <li class="dropdown">
+            <a href="about.html" style="color: #036374;">L'ÉCOLE</a>
+            <div class="dropdown-menu">
+              <a href="mot_directeur.html">Mot du Directeur</a>
+              <a href="#presentation">Présentation</a>
+              <a href="#organisation">Organisation</a>
+              <a href="#chiffres">L'E.S.T. en chiffre</a>
+              <a href="#reglements">Règlements et textes</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#structures">STRUCTURES</a>
+            <div class="dropdown-menu">
+              <a href="#administration">Administration</a>
+              <a href="#service">Services</a>
+              <a href="#corps_enseignant">Corps Enseignant</a>
+              <a href="#departements">Departements</a>
+              <a href="#conseil_etablissement">Conseil d'etablissement</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#formations-section">FORMATIONS</a>
+            <div class="dropdown-menu">
+              <a href="#formations-section" class="formation-menu-link" data-formation="dut1">Diplôme universitaire de Technologie (1/2)</a>
+              <a href="#formations-section" class="formation-menu-link" data-formation="dut2">Diplôme universitaire de Technologie (2/2)</a>
+              <a href="#formations-section" class="formation-menu-link" data-formation="licence">Licence</a>
+              <a href="#formations-section" class="formation-menu-link" data-formation="continues">Formations Continues</a>
+            </div>
+          </li>
+          <li><a href="#partenariats">PARTENARIATS</a></li>
+          <li class="dropdown">
+            <a href="#etudiant">ETUDIANT</a>
+            <div class="dropdown-menu">
+              <a href="#calendrier-univ">Calendrier universitaire</a>
+              <a href="#emploi-temps">Emploi du temps</a>
+              <a href="#calendrier-exam">Calendrier des examens</a>
+              <a href="#bourses">Bourses</a>
+              <a href="#documents">Documents utiles</a>
+              <a href="#calendrier-evenements">Calendrier des évènements</a>
+              <a href="#reglement">Règlement intérieur</a>
+              <a href="#admission-ecole">Admission à l'Ecole</a>
+              <a href="#venir-est">Venir à l'EST – Khenifra</a>
+            </div>
+          </li>
+          <li><a href="#cours">COURS</a></li>
+          <li><a href="#vie">VIE UNIVERSITAIRE</a></li>
+        </ul>
+      </nav>
+      <div class="search-container">
+        <input type="search" placeholder="Rechercher..." class="search-input">
+        <button class="search-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="about-content">
+    <!-- Section Mot du Directeur -->
+    <section id="mot-directeur" class="about-section">
+      <h1 class="section-title">Mot du Directeur</h1>
+      <div class="director-message">
+        <div class="director-image">
+          <img src="director.jpg" alt="Directeur de l'EST Khenifra">
+        </div>
+        <!-- Contenu principal -->
+    <div class="director-content">
+      
+      
+      <div class="director-text">
+          <p><span class="school-name">L'École Supérieure de Technologie Khénifra</span> ; créée en avril 2013 et qui a ouvert ses portes aux étudiants en septembre 2014, est une institution, relevant aujourd'hui de l'Université Sultan Moulay Slimane. Elle a pour mission principale de délivrer le Diplôme Universitaire de Technologie (D.U.T), le Diplôme de Licence Professionnelle (L.P.) et de répondre aux besoins du secteur socioéconomique de la région du Moyen Atlas aussi bien en matière de formation, de prestations de services qu'en matière de recherche fondamentale, appliquée et recherche développement. Cette école est amenée à procurer aux différents secteurs socio-économiques, à l'échelle locale et nationale, les ressources humaines compétentes qualifiées et adéquates tant par le nombre que par leurs aptitudes professionnelles.</p>
+
+          <p>C'est un grand honneur d'être Directeur de ce bel établissement qui est considéré comme le premier noyau universitaire sur les terres Zaïnes. Etre Directeur est un honneur et une reconnaissance mais c'est avant tout une responsabilité nécessitant des compétences multiples. Dans le cadre de cette fonction, nous devons être d'abord un leader visionnaire ayant la capacité et la facilité de communication, ensuite être capable de gérer des administrations et ayant assez de crédibilité pour pouvoir faire autorité face aux divers problèmes des établissements universitaires, créant ainsi une cohésion entre toutes les composantes de l'école et entre celle-ci et son environnement.</p>
+
+          <p>Dans les pays en voie de développement, la demande d'enseignement supérieur a augmenté au cours des dernières années et les sollicitations des marchés de travail sont devenues de plus en plus pressantes. A ce titre, nous devons nous pencher en premier lieu sur ce problème d'inadéquation formation/emploi. En effet, pour sa croissance économique le Maroc a misé sur des secteurs importants (l'Energie, l'Agriculture, la Pêche maritime, le Tourisme, l'Industrie …) en élaborant des projets tels que le Plan Azur, le Plan Maroc Vert, l'Initiative Nationale pour le Développement Humain (INDH), le Plan Energies Renouvelables, les Initiatives 10000 Ingénieurs, le Plan d'urgence. Pour réussir de telles stratégies. Il faut avoir de fortes structures de gestion et de pilotage. Notre vision est ainsi une continuité et une consolidation des acquis notamment les principaux résultats du plan d'urgence. Elle se cadre avec le projet de développement de l'Université Sultan Moulay Slimane et vise à créer une nouvelle synergie (Pédagogie-Recherche) au service de l'emploi, au sein de l'Ecole Supérieure de Technologie de Khénifra afin de la rendre plus performante, plus attractive et d'augmenter sa visibilité nationale et internationale en lui donnant les moyens de viser l'excellence et la performance. Ce qui permettra à l'école d'assurer sa fonction première, celle de former des étudiants (ou ressources humaines) dotés de compétences nécessaire pour être en adéquation avec les exigences du marché de l'emploi.</p>
+
+          <p>Notre vision est conçue dans le cadre des orientations nationales déterminées par les hautes directives royales, la Charte Nationale de l'Education et de la Formation (CNEF) et la loi 01.00. Elle vise à renforcer le rôle joué par l'université au niveau du développement socio-économique de la région et par conséquent de notre pays en développant au sein des formations qui répondent aux exigences d'un environnement en évolution et aux mutations continues du monde de travail.</p>
+
+          <p>L'Ecole Supérieure de Technologie de Khénifra possède des atouts considérables pour se développer. Elle est appelée actuellement à gérer un processus de changement qui lui permettra de renforcer sa place en tant qu'établissement de qualité de l'Université Sultan Moulay Slimane et d'occuper une place de distinction sur le plan national. Pour cela, les différents acteurs doivent agir à plusieurs niveaux. Notre vision est claire et ambitieuse, nous en avons l'intime conviction que sa réalisation sera à notre portée. Dans cette parfaite harmonie, notre vision s'articule autour de ces principaux points qui représentent la feuille de route pour la période 2020-2024 :</p>
+
+          <ul class="director-points">
+              <li>Une gestion des ressources humaines basée sur une réelle politique participative ;</li>
+              <li>La Modernisation des procédures administratives (informatisation et formation continue pour le personnel) ;</li>
+              <li>Une amélioration de la qualité de l'enseignement, de la formation et de la recherche ;</li>
+              <li>La responsabilisation de l'étudiant dans la gestion de son propre cursus et son orientation vers plus d'esprit d'initiative et d'esprit citoyen ;</li>
+              <li>Le développement d'une politique de partenariat et de coopération ambitieuses ;</li>
+              <li>La valorisation de la recherche occupera une place importante et l'établissement devra avant tout orienter sa recherche vers un intérêt local, régional puis national ;</li>
+              <li>Une bonne gouvernance du temps, du patrimoine, de maintenance, de ressources humaines et financières ;</li>
+          </ul>
+
+          <p>Une approche qualité sera présente à tous les niveaux avec une réelle mobilisation de tous les moyens d'accompagnement humains, matériels et financiers, assurée par une bonne stratégie de communication avec l'ensemble des parties prenantes</p>
+
+          <div class="director-signature">
+              <p class="director-name">Pr. Haasan MOUHDACH </p>
+              <p class="director-title">Directeur de l'Ecole Supérieure de Technologie - Khénifra</p>
+          </div>
+      </div>
+  </div>
+      </div>
+    </section>
+
+   
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="LOGOEST.png" alt="Logo EST" class="footer-logo-img">
+      </div>
+      <div class="footer-links">
+        <h3>Liens rapides</h3>
+        <ul>
+          <li><a href="test.html">Accueil</a></li>
+          <li><a href="#formations-section">Formations</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#actualites">Actualités</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p>EST Khenifra</p>
+        <p>Adresse: Route de Marrakech, Khenifra</p>
+        <p>Téléphone: +212 5XX XX XX XX</p>
+        <p>Email: contact@est-khenifra.ma</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 EST Khenifra. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <style>
+    .about-content {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .about-section {
+      margin-bottom: 60px;
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-title {
+      color: #036374;
+      font-size: 32px;
+      margin-bottom: 30px;
+      position: relative;
+      padding-bottom: 15px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100px;
+      height: 3px;
+      background-color: #036374;
+      border-radius: 2px;
+    }
+
+    .director-message {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+
+    .director-image {
+      flex: 0 0 300px;
+    }
+
+    .director-image img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .director-text {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.8;
+      color: #555;
+      text-align: justify;
+      font-size: 16px;
+    }
+
+    .director-text p {
+      margin-bottom: 25px;
+      letter-spacing: 0.3px;
+    }
+
+    .school-name {
+      font-weight: 600;
+      color: #444;
+      font-size: 17px;
+    }
+
+    .director-points {
+      margin: 30px 0;
+      padding-left: 20px;
+      list-style: none;
+    }
+
+    .director-points li {
+      margin-bottom: 15px;
+      position: relative;
+      padding-left: 25px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .director-points li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #036374;
+      font-size: 20px;
+    }
+
+    .director-signature {
+      margin-top: 40px;
+      text-align: right;
+      font-style: italic;
+    }
+
+    .director-name {
+      font-weight: bold;
+      font-size: 18px;
+      color: #036374;
+      margin-bottom: 5px;
+    }
+
+    .director-title {
+      color: #666;
+      font-size: 16px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .stat-card {
+      background: #f8f9fa;
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: #036374;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      color: #036374;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .documents-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .document-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .document-item:hover {
+      background: #f0f0f0;
+    }
+
+    .document-icon {
+      font-size: 24px;
+    }
+
+    .document-link {
+      color: #036374;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .document-link:hover {
+      color: #036374;
+    }
+
+    @media (max-width: 768px) {
+      .director-message {
+        flex-direction: column;
+      }
+
+      .director-image {
+        flex: 0 0 auto;
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Modification du menu */
+    .dropdown-menu a:hover {
+      color: #036374;
+    }
+
+    /* Modification du lien L'ÉCOLE */
+    .bottom-bar nav ul li a[href="about.html"] {
+      color: #036374;
+    }
+
+    .top-bar nav ul li a:hover {
+        color: #036374;
+    }
+
+    .highlight:hover {
+        color: #036374 !important;
+    }
+
+    .footer-links ul li a:hover {
+        color: #036374;
+    }
+  </style>
+
+  <script src="transitions.js"></script>
+</body>
+</html> 

@@ -1,0 +1,36 @@
+/* Animations pour les transitions de page */
+.fade-out {
+    animation: fadeOut 0.5s;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Style initial pour le body */
+body {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in forwards;
+} 

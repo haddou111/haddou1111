@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EST Khenifra</title>
+    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="appeld'offres.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .highlight {
+            background-color: transparent !important;
+            padding: 8px 15px !important;
+            border-radius: 4px !important;
+            color: #F39C12 !important;
+            font-size: 16px !important;
+            transition: all 0.3s ease !important;
+            border: 1px solid #F39C12 !important;
+        }
+
+        .highlight:hover {
+            background-color: transparent !important;
+            color: #F39C12 !important;
+            border: 1px solid #F39C12 !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Partie supérieure avec fond bleu -->
+        <div class="top-bar">
+            <nav>
+                <ul>
+                    <li><a href="test.html" onclick="transition(event, 'test.html')" style="color: white; cursor: pointer;">Accueil</a></li>
+                    <li><a href="calendrier.html" style="color: #EA9A07;">Calendrier des évènements</a></li>
+                    <li><a href="recrutement.html" onclick="transition(event, 'recrutement.html')" style="color: white; cursor: pointer;">Recrutements</a></li>
+                    <li><a href="appel.html" style="color: #EA9A07;">Appels d'offres</a></li>
+                    <li><a href="#offres">Appels d'offres</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#universite" class="highlight">L'Université</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Partie inférieure avec fond blanc -->
+        <div class="bottom-bar">
+            <div class="logo-container">
+                <img src="LOGOEST.png" alt="Logo de l'école" class="logo">
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#ecole">L'ÉCOLE</a>
+                        <div class="dropdown-menu">
+                            <a href="#mot-directeur">Mot du Directeur</a>
+                            <a href="#presentation">Présentation</a>
+                            <a href="#organisation">Organisation</a>
+                            <a href="#chiffres">L'E.S.T. en chiffre</a>
+                            <a href="#reglements">Règlements et textes</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#structures">STRUCTURES</a>
+                        <div class="dropdown-menu">
+                            <a href="#administration">Administration</a>
+                            <a href="#service">Services</a>
+                            <a href="#corps_enseignant">Corps Enseignant</a>
+                            <a href="#departements">Departements</a>
+                            <a href="#conseil_etablissement">Conseil d'etablissement</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#formations">FORMATIONS</a>
+                        <div class="dropdown-menu">
+                            <a href="#dut1">Diplôme universitaire de Technologie (1/2)</a>
+                            <a href="#dut2">Diplôme universitaire de Technologie (2/2)</a>
+                            <a href="#licence">Licence</a>
+                            <a href="#continues">Formations Continues</a>
+                        </div>
+                    </li>
+                    <li><a href="#partenariats">PARTENARIATS</a></li>
+                    <li class="dropdown">
+                        <a href="#etudiant">ETUDIANT</a>
+                        <div class="dropdown-menu">
+                            <a href="#calendrier-universitaire">Calendrier universitaire</a>
+                            <a href="#emploi-temps">Emploi du temps</a>
+                            <a href="#calendrier-examens">Calendrier des examens</a>
+                            <a href="#bourses">Bourses</a>
+                            <a href="#documents-utiles">Documents utiles</a>
+                            <a href="#calendrier-evenements">Calendrier des événements</a>
+                            <a href="#reglement-interieur">Règlement intérieur</a>
+                            <a href="#admission-ecole">Admission à l'Ecole</a>
+                            <a href="#venir-est-khenifra">Venir à l'EST – Khenifra</a>
+                        </div>
+                    </li>
+                    <li><a href="#cours">COURS</a></li>
+                    <li><a href="#vie">VIE UNIVERSITAIRE</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="search" placeholder="Rechercher..." class="search-input">
+                <button class="search-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- En-tête du calendrier avec image floutée -->
+    <div class="calendar-header">
+        <img src="EST_KHENIFRA.jpg" alt="EST Khenifra" class="calendar-header-image">
+        <h1 class="calendar-header-title">Calendrier des évènements</h1>
+    </div>
+
+    <div class="no-results-message" style="text-align: center; padding: 30px; color: #796e6e; font-size: 18px; font-family: 'Poppins', sans-serif;">
+        Aucun élément ne correspond à vos critères de recherche. Veuillez réessayer avec des mots-clés différents.
+    </div>
+
+    <!-- Contenu du calendrier -->
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="LOGOEST.png" alt="Logo EST" class="footer-logo-img">
+            </div>
+            <div class="footer-links">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Formations</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Actualités</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>EST Khenifra</p>
+                <p>Adresse: Route de Marrakech, Khenifra</p>
+                <p>Téléphone: +212 5XX XX XX XX</p>
+                <p>Email: contact@est-khenifra.ma</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EST Khenifra. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="transitions.js"></script>
+</body>
+</html>
+ 

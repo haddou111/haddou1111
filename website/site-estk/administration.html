@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - EST Khenifra</title>
+    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .admin-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .admin-title {
+            font-size: 48px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .admin-subtitle {
+            font-size: 24px;
+            color: #7f8c8d;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .admin-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            animation: fadeInUp 1s ease;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .admin-card-icon {
+            font-size: 40px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+
+        .admin-card-title {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .admin-card-text {
+            font-size: 16px;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .admin-contact {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            animation: fadeIn 1s ease;
+        }
+
+        .admin-contact-title {
+            font-size: 32px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .admin-contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item i {
+            font-size: 24px;
+            color: #3498db;
+        }
+
+        .contact-item span {
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .admin-title {
+                font-size: 36px;
+            }
+            .admin-subtitle {
+                font-size: 20px;
+            }
+            .admin-card-title {
+                font-size: 20px;
+            }
+            .admin-contact-title {
+                font-size: 28px;
+            }
+            .contact-item span {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Partie supérieure avec fond bleu -->
+        <div class="top-bar">
+            <nav>
+                <ul>
+                    <li><a href="test.html" onclick="transition(event, 'test.html')">Accueil</a></li>
+                    <li><a href="calendrier.html" onclick="transition(event, 'calendrier.html')">Calendrier des évènements</a></li>
+                    <li><a href="recrutement.html" onclick="transition(event, 'recrutement.html')">Recrutements</a></li>
+                    <li><a href="appel.html" onclick="transition(event, 'appel.html')">Appels d'offres</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#universite" class="highlight">L'Université</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Partie inférieure avec fond blanc -->
+        <div class="bottom-bar">
+            <div class="logo-container">
+                <img src="LOGOEST.png" alt="Logo de l'école" class="logo">
+            </div>
+            <nav>
+                <ul>
+                    <li class="dropdown">
+                        <a href="#" style="cursor: default;">L'ÉCOLE</a>
+                        <div class="dropdown-menu">
+                            <a href="mot_directeur.html" onclick="transition(event, 'mot_directeur.html')">Mot du Directeur</a>
+                            <a href="presentation.html" onclick="transition(event, 'presentation.html')">Présentation</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Organisation</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">L'E.S.T. en chiffre</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Règlements et textes</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#structures">STRUCTURES</a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="active" style="background-color: rgba(243, 156, 18, 0.1); color: #F39C12;">Administration</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Services</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Corps Enseignant</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Departements</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Conseil d'etablissement</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#formations">FORMATIONS</a>
+                        <div class="dropdown-menu">
+                            <a href="#" style="cursor: not-allowed; color: #999;">Diplôme universitaire de Technologie (1/2)</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Diplôme universitaire de Technologie (2/2)</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Licence</a>
+                            <a href="#" style="cursor: not-allowed; color: #999;">Formations Continues</a>
+                        </div>
+                    </li>
+                    <li><a href="#partenariats">PARTENARIATS</a></li>
+                    <li class="dropdown">
+                        <a href="#etudiant">ETUDIANT</a>
+                        <div class="dropdown-menu">
+                            <a href="#calendrier-universitaire">Calendrier universitaire</a>
+                            <a href="#emploi-temps">Emploi du temps</a>
+                            <a href="#calendrier-examens">Calendrier des examens</a>
+                            <a href="#bourses">Bourses</a>
+                            <a href="#documents-utiles">Documents utiles</a>
+                            <a href="#calendrier-evenements">Calendrier des événements</a>
+                            <a href="#reglement-interieur">Règlement intérieur</a>
+                            <a href="#admission-ecole">Admission à l'Ecole</a>
+                            <a href="#venir-est-khenifra">Venir à l'EST – Khenifra</a>
+                        </div>
+                    </li>
+                    <li><a href="#cours">COURS</a></li>
+                    <li><a href="#vie">VIE UNIVERSITAIRE</a></li>
+                </ul>
+            </nav>
+            <div class="search-container">
+                <input type="search" placeholder="Rechercher..." class="search-input">
+                <button class="search-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1 class="admin-title">Administration de l'EST Khenifra</h1>
+            <p class="admin-subtitle">Une équipe dévouée au service de l'excellence académique et du développement professionnel de nos étudiants</p>
+        </div>
+
+        <div class="admin-grid">
+            <div class="admin-card">
+                <i class="fas fa-user-tie admin-card-icon"></i>
+                <h2 class="admin-card-title">Direction</h2>
+                <p class="admin-card-text">La direction assure le leadership stratégique et la gestion administrative de l'établissement, en veillant à maintenir les plus hauts standards d'excellence académique.</p>
+            </div>
+
+            <div class="admin-card">
+                <i class="fas fa-graduation-cap admin-card-icon"></i>
+                <h2 class="admin-card-title">Service Pédagogique</h2>
+                <p class="admin-card-text">Responsable de la planification et de la coordination des activités d'enseignement, ainsi que du suivi de la progression académique des étudiants.</p>
+            </div>
+
+            <div class="admin-card">
+                <i class="fas fa-users admin-card-icon"></i>
+                <h2 class="admin-card-title">Service des Affaires Étudiantes</h2>
+                <p class="admin-card-text">Accompagne les étudiants dans leur parcours, gère les activités parascolaires et assure leur bien-être au sein de l'établissement.</p>
+            </div>
+
+            <div class="admin-card">
+                <i class="fas fa-cogs admin-card-icon"></i>
+                <h2 class="admin-card-title">Service Technique</h2>
+                <p class="admin-card-text">Veille au bon fonctionnement des installations et des équipements, garantissant un environnement d'apprentissage optimal.</p>
+            </div>
+
+            <div class="admin-card">
+                <i class="fas fa-handshake admin-card-icon"></i>
+                <h2 class="admin-card-title">Relations Externes</h2>
+                <p class="admin-card-text">Développe et maintient les partenariats avec les entreprises et les institutions, facilitant l'insertion professionnelle des diplômés.</p>
+            </div>
+
+            <div class="admin-card">
+                <i class="fas fa-chart-line admin-card-icon"></i>
+                <h2 class="admin-card-title">Service Qualité</h2>
+                <p class="admin-card-text">Assure le suivi et l'amélioration continue des processus administratifs et pédagogiques de l'établissement.</p>
+            </div>
+        </div>
+
+        <div class="admin-contact">
+            <h2 class="admin-contact-title">Contactez l'Administration</h2>
+            <div class="admin-contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>contact@est-khenifra.ma</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+212 5XX XX XX XX</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Lun-Ven: 8h30-16h30</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="LOGOEST.png" alt="Logo EST" class="footer-logo-img">
+            </div>
+            <div class="footer-links">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">Formations</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Actualités</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>EST Khenifra</p>
+                <p>Adresse: Route de Marrakech, Khenifra</p>
+                <p>Téléphone: +212 5XX XX XX XX</p>
+                <p>Email: contact@est-khenifra.ma</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EST Khenifra. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="transitions.js"></script>
+</body>
+</html> 

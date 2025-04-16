@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EST Khenifra</title>
+  <link rel="stylesheet" href="test.css">
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+  <header>
+    <!-- Partie supérieure avec fond bleu -->
+    <div class="top-bar">
+      <nav>
+        <ul>
+          <li><a href="#" class="active" style="color: #F39C12;">Accueil</a></li>
+          <li><a href="calendrier.html" onclick="transition(event, 'calendrier.html')">Calendrier des évènements</a></li>
+          <li><a href="recrutement.html" onclick="transition(event, 'recrutement.html')">Recrutements</a></li>
+          <li><a href="appel.html" onclick="transition(event, 'appel.html')">Appels d'offres</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#universite" class="highlight">L'Université</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Partie inférieure avec fond blanc -->
+    <div class="bottom-bar">
+      <div class="logo-container">
+        <img src="LOGOEST.png" alt="Logo de l'école" class="logo">
+      </div>
+      <nav>
+        <ul>
+          <li class="dropdown">
+            <a href="#" style="cursor: default;">L'ÉCOLE</a>
+            <div class="dropdown-menu">
+                <a href="mot_directeur.html" onclick="transition(event, 'mot_directeur.html')">Mot du Directeur</a>
+                <a href="presentation.html" onclick="transition(event, 'presentation.html')">Présentation</a>
+                <a href="#" style="cursor: not-allowed; color: #999;">Organisation</a>
+                <a href="#" style="cursor: not-allowed; color: #999;">L'E.S.T. en chiffre</a>
+                <a href="#" style="cursor: not-allowed; color: #999;">Règlements et textes</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#structures">STRUCTURES</a>
+            <div class="dropdown-menu">
+              <a href="administration.html" onclick="transition(event, 'administration.html')">Administration</a>
+              <a href="#" style="cursor: not-allowed; color: #999;">Services</a>
+              <a href="#" style="cursor: not-allowed; color: #999;">Corps Enseignant</a>
+              <a href="#" style="cursor: not-allowed; color: #999;">Departements</a>
+              <a href="#" style="cursor: not-allowed; color: #999;">Conseil d'etablissement</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#formations">FORMATIONS</a>
+            <div class="dropdown-menu">
+              <a href="#" style="cursor: not-allowed; color: #999;">Diplôme universitaire de Technologie (1/2)</a>
+              <a href="#" style="cursor: not-allowed; color: #999;">Diplôme universitaire de Technologie (2/2)</a>
+              <a href="#" style="cursor: not-allowed; color: #999;">Licence</a>
+              <a href="#" style="cursor: not-allowed; color: #999;">Formations Continues</a>
+            </div>
+          </li>
+          <li><a href="#partenariats">PARTENARIATS</a></li>
+          <li class="dropdown">
+            <a href="#etudiant">ETUDIANT</a>
+            <div class="dropdown-menu">
+              <a href="#calendrier-universitaire">Calendrier universitaire</a>
+              <a href="#emploi-temps">Emploi du temps</a>
+              <a href="#calendrier-examens">Calendrier des examens</a>
+              <a href="#bourses">Bourses</a>
+              <a href="#documents-utiles">Documents utiles</a>
+              <a href="#calendrier-evenements">Calendrier des événements</a>
+              <a href="#reglement-interieur">Règlement intérieur</a>
+              <a href="#admission-ecole">Admission à l'Ecole</a>
+              <a href="#venir-est-khenifra">Venir à l'EST – Khenifra</a>
+            </div>
+          </li>
+          <li><a href="#cours">COURS</a></li>
+          <li><a href="#vie">VIE UNIVERSITAIRE</a></li>
+        </ul>
+      </nav>
+      <div class="search-container">
+        <input type="search" placeholder="Rechercher..." class="search-input">
+        <button class="search-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Section Accueil -->
+  <div id="accueil" class="page-section active">
+    <!-- Section du slider d'images -->
+    <div class="main-image">
+      <div class="side-decoration left"></div>
+      <div class="hero-image-container">
+        <img src="EST_KHENIFRA.jpg" alt="EST Khenifra" class="hero-image" id="slideshow-image">
+        <button class="nav-button prev" id="prev-button">&lt;</button>
+        <button class="nav-button next" id="next-button">&gt;</button>
+      </div>
+      <div class="side-decoration right"></div>
+      <div class="image-navigation">
+        <div class="dots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Ajout du script pour le diaporama -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Tableau des images du diaporama
+        const images = ['EST_KHENIFRA.jpg', '2222.jpg', '3333.jpg'];
+        const slideshowImage = document.getElementById('slideshow-image');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+        const dots = document.querySelectorAll('.dot');
+        
+        let currentIndex = 0;
+        let isAnimating = false;
+        
+        // Préchargement des images pour une transition fluide
+        function preloadImages() {
+          images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+          });
+        }
+        
+        // Fonction pour afficher l'image avec animation
+        function showImage(index, direction) {
+          if (isAnimating) return;
+          isAnimating = true;
+          
+          console.log('Changing to image: ' + images[index] + ' (direction: ' + direction + ')');
+          
+          // Appliquer l'animation de sortie
+          if (direction === 'next') {
+            slideshowImage.classList.add('slideLeft');
+          } else if (direction === 'prev') {
+            slideshowImage.classList.add('slideRight');
+          } else {
+            slideshowImage.classList.add('fadeOut');
+          }
+          
+          // Mettre à jour l'image après un court délai
+          setTimeout(() => {
+            slideshowImage.src = images[index];
+            
+            // Supprimer les classes d'animation précédentes
+            slideshowImage.classList.remove('slideLeft', 'slideRight', 'fadeOut');
+            
+            // Forcer un reflow pour appliquer la nouvelle animation
+            void slideshowImage.offsetWidth;
+            
+            // Appliquer l'animation d'entrée
+            slideshowImage.classList.add('fadeIn');
+            
+            // Mise à jour des points indicateurs
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            
+            // Réinitialiser le drapeau d'animation
+            setTimeout(() => {
+              slideshowImage.classList.remove('fadeIn');
+              isAnimating = false;
+            }, 800);
+          }, 400);
+        }
+        
+        // Bouton précédent
+        prevButton.addEventListener('click', function() {
+          console.log('Previous button clicked');
+          const newIndex = (currentIndex - 1 + images.length) % images.length;
+          showImage(newIndex, 'prev');
+          currentIndex = newIndex;
+        });
+        
+        // Bouton suivant
+        nextButton.addEventListener('click', function() {
+          console.log('Next button clicked');
+          const newIndex = (currentIndex + 1) % images.length;
+          showImage(newIndex, 'next');
+          currentIndex = newIndex;
+        });
+        
+        // Navigation par les points
+        dots.forEach(dot => {
+          dot.addEventListener('click', function() {
+            const newIndex = parseInt(this.getAttribute('data-index'));
+            if (newIndex === currentIndex) return;
+            
+            const direction = newIndex > currentIndex ? 'next' : 'prev';
+            showImage(newIndex, direction);
+            currentIndex = newIndex;
+          });
+        });
+        
+        // Précharger les images
+        preloadImages();
+      });
+    </script>
+
+    <!-- Section des services/ressources -->
+    <div class="services-container">
+      <div class="resources-section">
+        <div class="resource-item">
+          <img src="ENT.png" alt="ENT" class="resource-icon">
+          <div class="resource-content">
+            <h3>ENT</h3>
+            <p>Espace Numérique de Travail</p>
+            <a href="#" class="resource-link"></a>
+          </div>
+        </div>
+        
+        <div class="resource-item">
+          <img src="pmb.png" alt="PMB" class="resource-icon">
+          <div class="resource-content">
+            <h3>PMB</h3>
+            <p>Bibliothèque universitaire</p>
+            <a href="#" class="resource-link"></a>
+          </div>
+        </div>
+        
+        <div class="resource-item">
+          <img src="AMO.png" alt="AMO" class="resource-icon">
+          <div class="resource-content">
+            <h3>AMO</h3>
+            <p>Assurances maladie obligatoire</p>
+            <a href="#" class="resource-link"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section d'admission redessinée -->
+    <div class="admission-container">
+      <div class="admission-section">
+        <div class="admission-left">
+          <img src="portail.png" alt="Portail d'orientation" class="admission-logo">
+        </div>
+        
+        <div class="admission-right">
+          <h2>Accès aux Ecoles Supérieures de Technologie au titre de l'année universitaire 2024-2025</h2>
+          <ul>
+            <li>Création de compte et expression des choix des filières sur <a href="https://www.cursussup.gov.ma/">https://www.cursussup.gov.ma/</a> : du mardi 02 juillet 2024 au lundi 29 juillet 2024.</li>
+          </ul>
+          <div class="admission-buttons">
+            <a href="https://www.cursussup.gov.ma/" class="admission-button">https://www.cursussup.gov.ma/</a>
+            <a href="#" class="admission-button">Guide de candidature - دليل الترشيح</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Actualités -->
+    <div class="news-section">
+      <h2 class="news-title">AVIS</h2>
+      <div class="news-divider"></div>
+      
+      <div class="news-slider-container">
+        <button class="news-nav-button prev">&lt;</button>
+        
+        <div class="news-cards-container">
+          <div class="news-card">
+            <div class="news-card-image">
+              <img src="DUT.jpg" alt="DUT Image">
+              <div class="news-category">Catégorie : activité pédagogique</div>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">Calendrier Des Rattrapage - DUT GP 2</h3>
+              <p class="news-card-description">Calendrier de la session de rattrapage - DUT GP 2 s4</p>
+              <div class="news-author-info">
+                <div class="news-author-avatar">
+                  <img src="admin-icon.png" alt="Admin">
+                </div>
+                <div class="news-author-details">
+                  <span class="news-author-name">Admin</span>
+                  <span class="news-date">Date : 24-03-2025</span>
+                </div>
+              </div>
+              <a href="#" class="news-read-more">Voir Avis</a>
+            </div>
+          </div>
+          
+          <div class="news-card">
+            <div class="news-card-image">
+              <img src="DUT.jpg" alt="DUT Image">
+              <div class="news-category">Catégorie : activité pédagogique</div>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">Calendrier Des Rattrapage- DUT MLT 2</h3>
+              <p class="news-card-description">planning des rattrapages 2ème année MLT 2 S4</p>
+              <div class="news-author-info">
+                <div class="news-author-avatar">
+                  <img src="admin-icon.png" alt="Admin">
+                </div>
+                <div class="news-author-details">
+                  <span class="news-author-name">Admin</span>
+                  <span class="news-date">Date : 22-03-2025</span>
+                </div>
+              </div>
+              <a href="#" class="news-read-more">Voir Avis</a>
+            </div>
+          </div>
+          
+          <div class="news-card">
+            <div class="news-card-image">
+              <img src="DUT.jpg" alt="DUT Image">
+              <div class="news-category">Catégorie : activité pédagogique</div>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">Calendrier Des EFM- DUT GMA 2 (S4)</h3>
+              <p class="news-card-description">Calendrier des examens - 2ème année GMA 2</p>
+              <div class="news-author-info">
+                <div class="news-author-avatar">
+                  <img src="admin-icon.png" alt="Admin">
+                </div>
+                <div class="news-author-details">
+                  <span class="news-author-name">Admin</span>
+                  <span class="news-date">Date : 17-03-2025</span>
+                </div>
+              </div>
+              <a href="#" class="news-read-more">Voir Avis</a>
+            </div>
+          </div>
+          
+          <!-- Nouvelles cartes d'actualités -->
+          <div class="news-card">
+            <div class="news-card-image">
+              <img src="DUT.jpg" alt="DUT Image">
+              <div class="news-category">Catégorie : vie étudiante</div>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">Journée d'intégration - Promotion 2025</h3>
+              <p class="news-card-description">Programme de la journée d'accueil des nouveaux étudiants</p>
+              <div class="news-author-info">
+                <div class="news-author-avatar">
+                  <img src="admin-icon.png" alt="Admin">
+                </div>
+                <div class="news-author-details">
+                  <span class="news-author-name">Admin</span>
+                  <span class="news-date">Date : 15-03-2025</span>
+                </div>
+              </div>
+              <a href="#" class="news-read-more">Voir Avis</a>
+            </div>
+          </div>
+          
+          <div class="news-card">
+            <div class="news-card-image">
+              <img src="DUT.jpg" alt="DUT Image">
+              <div class="news-category">Catégorie : recherche</div>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">Conférence internationale sur l'IA - Appel à communications</h3>
+              <p class="news-card-description">Soumission des articles avant le 10 avril 2025</p>
+              <div class="news-author-info">
+                <div class="news-author-avatar">
+                  <img src="admin-icon.png" alt="Admin">
+                </div>
+                <div class="news-author-details">
+                  <span class="news-author-name">Admin</span>
+                  <span class="news-date">Date : 12-03-2025</span>
+                </div>
+              </div>
+              <a href="#" class="news-read-more">Voir Avis</a>
+            </div>
+          </div>
+          
+          <div class="news-card">
+            <div class="news-card-image">
+              <img src="DUT.jpg" alt="DUT Image">
+              <div class="news-category">Catégorie : partenariat</div>
+            </div>
+            <div class="news-card-content">
+              <h3 class="news-card-title">Convention de collaboration avec l'Université de Montréal</h3>
+              <p class="news-card-description">Opportunités d'échanges et de mobilité pour les étudiants</p>
+              <div class="news-author-info">
+                <div class="news-author-avatar">
+                  <img src="admin-icon.png" alt="Admin">
+                </div>
+                <div class="news-author-details">
+                  <span class="news-author-name">Admin</span>
+                  <span class="news-date">Date : 10-03-2025</span>
+                </div>
+              </div>
+              <a href="#" class="news-read-more">Voir Avis</a>
+            </div>
+          </div>
+        </div>
+        
+        <button class="news-nav-button next">&gt;</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="recrutement" class="page-section">
+    <!-- Contenu des recrutements -->
+  </div>
+
+  <div id="offres" class="page-section">
+    <!-- Contenu des appels d'offres -->
+  </div>
+
+  <div id="contact" class="page-section">
+    <!-- Contenu de la page contact -->
+  </div>
+
+  <div id="universite" class="page-section">
+    <!-- Contenu de la page université -->
+  </div>
+
+  <!-- Section des formations -->
+  <div class="formations-display">
+    <div class="formations-row">
+      <div class="formation-box" data-type="dut1">
+        <h2 class="formation-title">Diplôme universitaire de Technologie (1/2)</h2>
+        <ul class="formation-list">
+          <li><span class="formation-arrow">›</span> Biotechnologie végétale</li>
+          <li><span class="formation-arrow">›</span> Génie de l'Environnement</li>
+          <li><span class="formation-arrow">›</span> Génie des Mines et de l'Environnement</li>
+          <li><span class="formation-arrow">›</span> Génie Thermique & Energies Renouvelables</li>
+          <li><span class="formation-arrow">›</span> Ingénierie des Données et Intelligence Artificielle</li>
+        </ul>
+      </div>
+
+      <div class="formation-box" data-type="dut2">
+        <h2 class="formation-title">Diplôme universitaire de Technologie (2/2)</h2>
+        <ul class="formation-list">
+          <li><span class="formation-arrow">›</span> Ingénierie Logicielle Et Réseaux</li>
+          <li><span class="formation-arrow">›</span> Laboratoires des bioanalyses et contrôle</li>
+          <li><span class="formation-arrow">›</span> Management des Ressources Humaines</li>
+          <li><span class="formation-arrow">›</span> Techniques de commercialisation et de communication</li>
+          <li><span class="formation-arrow">›</span> Technologie Agroalimentaire</li>
+        </ul>
+      </div>
+
+      <div class="formation-box" data-type="licence">
+        <h2 class="formation-title">Licence</h2>
+        <ul class="formation-list">
+          <li><span class="formation-arrow">›</span> Aquaculture et gestion durable des écosystèmes aquatiques</li>
+          <li><span class="formation-arrow">›</span> Entrepreneuriat et développement territorial</li>
+          <li><span class="formation-arrow">›</span> Ingénierie Géologique et Hydrique</li>
+          <li><span class="formation-arrow">›</span> Métiers des Laboratoires de Bioanalyses et de contrôle qualité</li>
+          <li><span class="formation-arrow">›</span> Tourisme Durable et Conservation de la Nature</li>
+        </ul>
+      </div>
+
+      <div class="formation-box" data-type="continues">
+        <h2 class="formation-title">Formations Continues</h2>
+        <ul class="formation-list">
+          <li><span class="formation-arrow">›</span> LUS – Licence d'Université Spécialisée</li>
+          <li><span class="formation-arrow">›</span> MUS – Master d'Université Spécialisé</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="formations-navigation">
+      <button class="nav-button prev">‹</button>
+      <button class="nav-button next">›</button>
+    </div>
+  </div>
+  
+  <style>
+    .formations-display {
+      position: relative;
+      padding: 20px;
+      background: #fff;
+      overflow: hidden;
+      max-width: 100%;
+      scroll-margin-top: 100px;
+    }
+
+    .formations-row {
+      display: flex;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      gap: 1px;
+      background: #f5f5f5;
+    }
+
+    .formation-box {
+      flex: 0 0 25%;
+      background: white;
+      padding: 25px;
+      border: none;
+      border-right: 1px solid #f0f0f0;
+    }
+
+    .formation-box:last-child {
+      border-right: none;
+    }
+
+    .formation-title {
+      color: #036374;
+      font-size: 18px;
+      margin-bottom: 15px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #eee;
+      font-weight: 600;
+    }
+
+    .formation-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .formation-list li {
+      padding: 6px 0;
+      display: flex;
+      align-items: flex-start;
+      color: #333;
+      font-size: 14px;
+      line-height: 1.4;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .formation-list li:hover {
+      color: #036374;
+    }
+
+    .formation-list li:hover .formation-arrow {
+      transform: translateX(3px);
+    }
+
+    .formation-arrow {
+      color: #e9b65c;
+      margin-right: 8px;
+      font-size: 16px;
+      line-height: 1.4;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .formations-navigation {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+      pointer-events: none;
+    }
+
+    .nav-button {
+      background: #fff;
+      border: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      pointer-events: auto;
+      color: #666;
+      margin: 0 5px;
+    }
+
+    .nav-button:hover {
+      background: #e9b65c;
+      color: white;
+    }
+
+    .nav-button.prev {
+      left: 5px;
+    }
+
+    .nav-button.next {
+      right: 5px;
+    }
+
+    /* Style pour les écrans larges */
+    @media (min-width: 1024px) {
+      .formations-row {
+        flex-wrap: nowrap;
+        transform: none !important;
+      }
+      
+      .formations-navigation {
+        display: none;
+      }
+    }
+
+    /* Style pour les écrans mobiles */
+    @media (max-width: 1023px) {
+      .formation-box {
+        flex: 0 0 100%;
+      }
+    }
+
+    .formation-menu-link {
+      display: block;
+      padding: 8px 15px;
+      color: #333;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .formation-menu-link:hover {
+      color: #036374;
+    }
+
+    /* Styles pour la barre de navigation supérieure */
+    .top-bar {
+      background-color: #036374 !important;
+      padding: 15px 0;
+      width: 100%;
+    }
+
+    .top-bar nav ul li a {
+      color: white !important;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .highlight {
+      background-color: transparent !important;
+      padding: 8px 15px !important;
+      border-radius: 4px !important;
+      color: white !important;
+      font-size: 16px !important;
+      transition: all 0.3s ease !important;
+      border: 1px solid white !important;
+    }
+
+    .highlight:hover {
+      background-color: transparent !important;
+      color: #F39C12 !important;
+      border: 1px solid #F39C12 !important;
+    }
+
+    /* Styles pour la barre de navigation inférieure */
+    .bottom-bar {
+      background: white !important;
+      padding: 15px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .bottom-bar nav ul li a {
+      color: #333 !important;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .bottom-bar nav ul li a:hover {
+      color: #036374 !important;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white !important;
+      min-width: 300px;
+      max-height: 500px;
+      overflow-y: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      padding: 10px 0;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .dropdown-menu::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .dropdown-menu::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+
+    .dropdown-menu::-webkit-scrollbar-thumb {
+      background: #036374;
+      border-radius: 4px;
+    }
+
+    .dropdown-menu::-webkit-scrollbar-thumb:hover {
+      background: #024956;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu a {
+      color: #333 !important;
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .dropdown-menu a:hover {
+      background-color: rgba(3, 99, 116, 0.1) !important;
+      color: #036374 !important;
+      padding-left: 25px;
+    }
+
+    /* Style de la barre de recherche */
+    .search-input {
+      border: 1px solid #ddd;
+      background: white;
+      color: #333;
+    }
+
+    .search-button {
+      color: #666;
+    }
+
+    /* Style pour les liens de navigation actifs */
+    .nav-active {
+      color: #036374 !important;
+    }
+
+    /* Style pour le bouton L'Université */
+    .highlight {
+      background-color: transparent !important;
+      padding: 8px 15px !important;
+      border-radius: 4px !important;
+      color: white !important;
+      font-size: 16px !important;
+      transition: all 0.3s ease !important;
+      border: 1px solid white !important;
+    }
+
+    .highlight:hover {
+      background-color: transparent !important;
+      color: #F39C12 !important;
+      border: 1px solid #F39C12 !important;
+    }
+
+    /* Styles pour les autres sections */
+    .news-title {
+      color: #EA9A07;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .news-card-title {
+      color: #EA9A07;
+      font-size: 16px;
+      margin: 10px 0;
+      line-height: 1.4;
+    }
+
+    .news-read-more {
+      color: #EA9A07;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .news-read-more:hover {
+      background-color: #EA9A07;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 4px;
+    }
+
+    .news-category {
+      background-color: #EA9A07;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .news-author-info {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .news-author-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 10px;
+    }
+
+    .news-author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-author-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-author-name {
+      font-weight: 600;
+    }
+
+    .news-date {
+      color: #666;
+      font-size: 0.8em;
+    }
+
+    .news-divider {
+      height: 1px;
+      background-color: #eee;
+      margin: 20px 0;
+    }
+
+    .news-cards-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 10px;
+    }
+
+    .news-card {
+      flex: 0 0 25%;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .news-card-image {
+      position: relative;
+      height: 200px;
+    }
+
+    .news-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .news-card-content {
+      padding: 20px;
+    }
+
+    .news-read-more {
+      color: #036374;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .news-read-more:hover {
+      background-color: #036374;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 4px;
+    }
+
+    .news-nav-button {
+      background: #036374;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .news-nav-button:hover {
+      background-color: #e9b65c;
+    }
+
+    .news-nav-button.prev {
+      margin-right: 10px;
+    }
+
+    .news-nav-button.next {
+      margin-left: 10px;
+    }
+
+    .news-nav-button:disabled {
+      background-color: #eee;
+      color: #666;
+      cursor: not-allowed;
+    }
+
+    .news-nav-button:disabled:hover {
+      background-color: #eee;
+    }
+
+    .news-empty-message {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+    }
+
+    .events-container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .events-title {
+      font-size: 32px;
+      color: #036374;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .events-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background-color: #EA9A07;
+      border-radius: 2px;
+    }
+
+    .events-divider {
+      height: 1px;
+      background-color: #eee;
+      margin: 30px 0;
+    }
+
+    .events-content {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    .events-list {
+      flex: 2;
+      padding: 30px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .events-empty-message {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .events-show-all {
+      display: inline-block;
+      color: #036374;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: 2px solid #036374;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .events-show-all:hover {
+      background-color: #036374;
+      color: white;
+    }
+
+    .newsletter-subscription {
+      flex: 1;
+      max-width: 400px;
+      margin-left: auto;
+      background-color: #1e3c72;
+      background-image: linear-gradient(to right, #1e3c72, #2a5298);
+      padding: 30px;
+      border-radius: 8px;
+      color: white;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .newsletter-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 15px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .newsletter-icon img {
+      width: 60%;
+      height: 60%;
+      object-fit: contain;
+    }
+
+    .newsletter-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .newsletter-description {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.4;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin: 0 auto;
+      width: 90%;
+    }
+
+    .newsletter-input {
+      padding: 12px 15px;
+      border: none;
+      border-radius: 25px;
+      font-size: 14px;
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      margin-left: -10px;
+    }
+
+    .newsletter-button {
+      background-color: #036374;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      width: 100%;
+      margin-left: -10px;
+    }
+
+    .newsletter-button:hover {
+      background-color: #047d93;
+    }
+
+    .events-content {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    .events-list {
+      flex: 2;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: #036374;
+      color: #fff;
+      padding: 40px 20px 20px;
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-logo img {
+      width: 150px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .footer-links h3, 
+    .footer-contact h3 {
+      color: white;
+      font-size: 20px;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-links h3::after,
+    .footer-contact h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: #EA9A07;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links ul li a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links ul li a:hover {
+      color: #EA9A07;
+    }
+
+    .footer-contact p {
+      color: rgba(255, 255, 255, 0.8);
+      margin: 10px 0;
+      font-size: 14px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-bottom p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const formationsRow = document.querySelector('.formations-row');
+      const prevButton = document.querySelector('.nav-button.prev');
+      const nextButton = document.querySelector('.nav-button.next');
+      const boxes = document.querySelectorAll('.formation-box');
+      let currentIndex = 0;
+
+      function updateNavigation() {
+        if (window.innerWidth <= 1023) {
+          prevButton.style.display = currentIndex > 0 ? 'flex' : 'none';
+          nextButton.style.display = currentIndex < boxes.length - 1 ? 'flex' : 'none';
+        } else {
+          prevButton.style.display = 'none';
+          nextButton.style.display = 'none';
+        }
+      }
+
+      function scrollToBox(index) {
+        if (window.innerWidth <= 1023) {
+          currentIndex = index;
+          boxes[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+          updateNavigation();
+        }
+      }
+
+      prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          scrollToBox(currentIndex - 1);
+        }
+      });
+
+      nextButton.addEventListener('click', () => {
+        if (currentIndex < boxes.length - 1) {
+          scrollToBox(currentIndex + 1);
+        }
+      });
+
+      // Mettre à jour la navigation lors du redimensionnement
+      window.addEventListener('resize', updateNavigation);
+
+      // État initial
+      updateNavigation();
+
+      // Gestion du menu des formations
+      const formationLinks = document.querySelectorAll('.formation-menu-link');
+      const formationsSection = document.querySelector('.formations-display');
+      
+      formationLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Faire défiler jusqu'à la section des formations
+          formationsSection.scrollIntoView({ behavior: 'smooth' });
+          
+          // Récupérer l'index de la formation à afficher
+          const formationType = this.getAttribute('data-formation');
+          const targetBox = document.querySelector(`.formation-box[data-type="${formationType}"]`);
+          
+          if (targetBox) {
+            const index = Array.from(boxes).indexOf(targetBox);
+            scrollToBox(index);
+          }
+        });
+      });
+
+      // Vérifier l'URL au chargement de la page
+      if (window.location.hash) {
+        const targetLink = document.querySelector(`[data-type="${window.location.hash.slice(1)}"]`);
+        if (targetLink) {
+          targetLink.click();
+        }
+      }
+
+      // Gérer le scroll pour mettre à jour le menu actif
+      let timeout;
+      window.addEventListener('scroll', function() {
+        clearTimeout(timeout);
+        timeout = setTimeout(function() {
+          const boxes = document.querySelectorAll('.formation-box');
+          const scrollPosition = window.scrollY + 200; // Ajustez cette valeur selon vos besoins
+
+          boxes.forEach((box, index) => {
+            if (box.offsetTop <= scrollPosition && 
+                box.offsetTop + box.offsetHeight > scrollPosition) {
+              formationLinks.forEach(link => link.classList.remove('active'));
+              formationLinks[index].classList.add('active');
+            }
+          });
+        }, 100);
+      });
+    });
+  </script>
+
+  <!-- Section Évènements à venir -->
+  <div class="events-container">
+    <h2 class="events-title">Évènements à venir</h2>
+    <div class="events-divider"></div>
+    
+    <div class="events-content">
+      <div class="events-list">
+        <p class="events-empty-message">There're no item that match your search criteria. Please try again with different keywords.</p>
+        <a href="#" class="events-show-all">Afficher tous les évènements →</a>
+      </div>
+      
+      <div class="newsletter-subscription">
+        <div class="newsletter-icon">
+          <img src="logomail.png" alt="Email Icon" class="email-icon">
+        </div>
+        <h3 class="newsletter-title">S'inscrire à la Newsletter</h3>
+        <p class="newsletter-description">Recevez des mises à jour sur les actualités et les événements</p>
+        
+        <form class="newsletter-form" id="newsletter-form" novalidate>
+          <div class="input-group">
+            <input type="email" placeholder="Your Email Address" class="newsletter-input" id="newsletter-email" required>
+            <div class="error-message" id="email-error">
+              <i class="error-icon">!</i> Veuillez renseigner ce champ.
+            </div>
+          </div>
+          <button type="submit" class="newsletter-button">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="LOGOEST.png" alt="Logo EST" class="footer-logo-img">
+      </div>
+      <div class="footer-links">
+        <h3>Liens rapides</h3>
+        <ul>
+          <li><a href="#">Accueil</a></li>
+          <li><a href="#">Formations</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Actualités</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p>EST Khenifra</p>
+        <p>Adresse: Route de Marrakech, Khenifra</p>
+        <p>Téléphone: +212 5XX XX XX XX</p>
+        <p>Email: contact@est-khenifra.ma</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 EST Khenifra. Tous droits réservés.</p>
+    </div>
+  </footer>
+  
+  <!-- Script pour la validation du formulaire newsletter -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const newsletterForm = document.getElementById('newsletter-form');
+      const emailInput = document.getElementById('newsletter-email');
+      
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Réinitialiser l'état précédent
+        emailInput.classList.remove('show-error');
+        
+        // Vérifier si le champ est vide
+        if (!emailInput.value.trim()) {
+          emailInput.classList.add('show-error');
+          return false;
+        }
+        
+        // Vérifier le format d'email (facultatif)
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailInput.value)) {
+          emailInput.classList.add('show-error');
+          document.getElementById('email-error').textContent = 'Veuillez saisir une adresse email valide.';
+          return false;
+        }
+        
+        // Si tout est valide, soumettre le formulaire
+        alert('Inscription réussie! Merci de vous être abonné à notre newsletter.');
+        newsletterForm.reset();
+      });
+      
+      // Montrer le message d'erreur si l'utilisateur quitte le champ sans le remplir
+      emailInput.addEventListener('blur', function() {
+        if (!this.value.trim()) {
+          this.classList.add('show-error');
+        } else {
+          this.classList.remove('show-error');
+        }
+      });
+      
+      // Cacher le message d'erreur lorsque l'utilisateur commence à taper
+      emailInput.addEventListener('input', function() {
+        this.classList.remove('show-error');
+      });
+    });
+  </script>
+  
+  <!-- Script pour le slider d'actualités -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const cardsContainer = document.querySelector('.news-cards-container');
+      const prevButton = document.querySelector('.news-nav-button.prev');
+      const nextButton = document.querySelector('.news-nav-button.next');
+      const cards = document.querySelectorAll('.news-card');
+      const cardWidth = cards[0].offsetWidth + 30; // +30 pour le gap
+      const totalCards = cards.length;
+      const visibleCards = 3;
+      let currentIndex = 0;
+      
+      // Fonction pour désactiver les boutons au besoin
+      function updateButtonsState() {
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex >= totalCards - visibleCards;
+        
+        prevButton.style.opacity = prevButton.disabled ? '0.5' : '1';
+        nextButton.style.opacity = nextButton.disabled ? '0.5' : '1';
+        prevButton.style.cursor = prevButton.disabled ? 'default' : 'pointer';
+        nextButton.style.cursor = nextButton.disabled ? 'default' : 'pointer';
+      }
+      
+      // Fonction pour faire défiler à gauche
+      prevButton.addEventListener('click', function() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          cardsContainer.scrollTo({
+            left: cardWidth * currentIndex,
+            behavior: 'smooth'
+          });
+          updateButtonsState();
+        }
+      });
+      
+      // Fonction pour faire défiler à droite
+      nextButton.addEventListener('click', function() {
+        if (currentIndex < totalCards - visibleCards) {
+          currentIndex++;
+          cardsContainer.scrollTo({
+            left: cardWidth * currentIndex,
+            behavior: 'smooth'
+          });
+          updateButtonsState();
+        }
+      });
+      
+      // Initialiser l'état des boutons
+      updateButtonsState();
+      
+      // Gérer le redimensionnement de la fenêtre
+      window.addEventListener('resize', function() {
+        // Recalculer la largeur des cartes après redimensionnement
+        const newCardWidth = cards[0].offsetWidth + 30;
+        
+        // Réinitialiser la position de défilement
+        cardsContainer.scrollTo({
+          left: newCardWidth * currentIndex,
+          behavior: 'instant'
+        });
+      });
+    });
+  </script>
+
+  <script src="transitions.js"></script>
+</body>
+</html>
